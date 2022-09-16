@@ -1,0 +1,54 @@
+.carousel-indicator-container {
+    padding: 10px 0px 0px 0px;
+    margin: 0px;
+}
+
+.carousel-indicators {
+    color: #5F5EFE !important;
+    padding: 0px 3px !important;
+
+    svg {
+        width: 8px !important;
+        height: 8px !important;
+    }
+}
+
+.carousel-indicators-active {
+    color: #FFFFFF !important;
+}
+
+.info-item {
+    max-height: 120px;
+    min-height: 120px;
+    border-radius: var(--border-radius-container);
+    background: #2520E3;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .info-item-text {
+        font: normal normal 10px/15px NotoSans-Thin;
+        color: #FFFFFF;
+    }
+
+    .info-item-person-container {
+        display: flex;
+        gap: 10px;
+
+        .info-item-person-text-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            .info-item-person-name {
+                font: normal normal 10px/15px NotoSans-Medium;
+                color: #FFFFFF;
+            }
+
+            .info-item-person-profession {
+                font: normal normal 10px/15px NotoSans-Thin;
+                color: #FFFFFF;
+            }
+        }
+    }
+}
