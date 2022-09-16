@@ -5,6 +5,21 @@ body {
     background: #D8DEE7;
 }
 
+:root {
+    .Mui-focused {
+        & .MuiOutlinedInput-notchedOutline {
+            border: 1px solid #3C37FF !important;
+            &:hover {
+                border-color: 'yellow';
+            }
+
+        }
+    }
+
+    --border-radius-container: 15px;
+    --info-container-width: 40%;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -14,41 +29,49 @@ body {
     src: local("NotoSans-Black"),
         url("./assets/fonts/NotoSans-Black.ttf") format("truetype");
 }
+
 @font-face {
     font-family: "NotoSans-ExtraBold";
     src: local("NotoSans-ExtraBold"),
         url("./assets/fonts/NotoSans-ExtraBold.ttf") format("truetype");
 }
+
 @font-face {
     font-family: "NotoSans-Medium";
     src: local("NotoSans-Medium"),
         url("./assets/fonts/NotoSans-Medium.ttf") format("truetype");
 }
+
 @font-face {
     font-family: "NotoSans-Regular";
     src: local("NotoSans-Regular"),
         url("./assets/fonts/NotoSans-Regular.ttf") format("truetype");
 }
+
 @font-face {
     font-family: "NotoSans-SemiBold";
     src: local("NotoSans-SemiBold"),
         url("./assets/fonts/NotoSans-SemiBold.ttf") format("truetype");
 }
+
 @font-face {
     font-family: "NotoSans-Bold";
     src: local("NotoSans-Bold"),
         url("./assets/fonts/NotoSans-Bold.ttf") format("truetype");
 }
+
 @font-face {
     font-family: "NotoSans-Light";
     src: local("NotoSans-Light"),
         url("./assets/fonts/NotoSans-Light.ttf") format("truetype");
 }
+
 @font-face {
     font-family: "NotoSans-ExtraLight";
     src: local("NotoSans-ExtraLight"),
         url("./assets/fonts/NotoSans-ExtraLight.ttf") format("truetype");
 }
+
 @font-face {
     font-family: "NotoSans-Thin";
     src: local("NotoSans-Thin"),
@@ -67,8 +90,14 @@ body {
     .form-control-input {
         width: 100%;
         height: 35px;
-        .MuiInputBase-formControl {
+
+        .MuiOutlinedInput-root {
             height: 100%;
+
+            &:hover fieldset {
+                border-color: #C4C4C4;
+            }
+
             input {
                 padding: 5px 10px;
                 font: normal normal 12px NotoSans-Regular;
@@ -81,14 +110,20 @@ body {
         .MuiFormControlLabel-label {
             font: normal normal 12px NotoSans-Regular !important;
         }
+
         .checkbox {
             padding: 0px 9px 0px 9px !important;
+
             svg {
                 width: 20px;
                 height: 20px;
             }
         }
     }
+}
+
+.button-mt-10 {
+    margin-top: 10px !important;
 }
 
 .button-principal {

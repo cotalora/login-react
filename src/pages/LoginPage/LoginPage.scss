@@ -1,5 +1,4 @@
-$border-radius-container: 15px;
-$info-container-width: 40%;
+
 
 .login-main-container {
     display: flex;
@@ -13,16 +12,16 @@ $info-container-width: 40%;
         background: #FFFFFF;
         height: 520px;
         width: 850px;
-        border-radius: $border-radius-container;
+        border-radius: var(--border-radius-container);
         box-shadow: 0px 10px 15px -4px rgba(0,0,0,0.1);
         padding: 10px;
         display: flex;
 
         .info-container {
             height: 100%;
-            width: $info-container-width;
+            width: var(--info-container-width);
             background: #3C37FF;
-            border-radius: $border-radius-container;
+            border-radius: var(--border-radius-container);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -55,66 +54,11 @@ $info-container-width: 40%;
                     }
                 }
             }
-
-            .carousel-container {
-                .carousel-indicator-container {
-                    padding: 10px 0px 0px 0px;
-                    margin: 0px;
-                }
-    
-                .carousel-indicators {
-                    color: #5F5EFE;
-                    padding: 0px 3px;
-                    svg {
-                        width: 8px;
-                        height: 8px;
-                    }
-                }
-                
-                .carousel-indicators-active {
-                    color: #FFFFFF;
-                }
-    
-                .info-item {
-                    max-height: 120px;
-                    min-height: 120px;
-                    border-radius: $border-radius-container;
-                    background: #2520E3;
-                    padding: 10px;
-                    flex-direction: column;
-                    justify-content: space-between;
-
-                    .info-item-text {
-                        font: normal normal 10px/15px NotoSans-Thin;
-                        color: #FFFFFF;
-                    }
-
-                    .info-item-person-container {
-                        display: flex;
-                        gap: 10px;
-
-                        .info-item-person-text-container {
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: space-evenly;
-
-                            .info-item-person-name {
-                                font: normal normal 10px/15px NotoSans-Medium;
-                                color: #FFFFFF;
-                            }
-                            .info-item-person-profession {
-                                font: normal normal 10px/15px NotoSans-Thin;
-                                color: #FFFFFF;
-                            }
-                        }
-                    }
-                }
-            }
         }
 
         .form-container {
             font: normal normal 12px/16px NotoSans-Medium;
-            width: calc(100% - $info-container-width);
+            width: calc(100% - var(--info-container-width));
             padding: 5% 7%;
             display: flex;
             flex-direction: column;
@@ -130,25 +74,6 @@ $info-container-width: 40%;
                 color: #000000;
             }
 
-            .form-buttons-social {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                margin: 30px 0px 0px 0px;
-
-                .form-button-social{
-                    flex: 1 1 50%;
-                    border: 1px solid #b3b3b3 !important;
-                    text-transform: none;
-                    font: normal normal 12px NotoSans-Regular;
-                    color: #000000;
-                    .form-button-icon {
-                        width: 20px;
-                        height: 20px;
-                        margin: 0px 10px 0px 0px;
-                    }
-                }
-            }
             .form-divider {
                 font: normal normal 12px NotoSans-Thin;
                 color: #b1b1b1;
