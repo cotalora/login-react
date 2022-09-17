@@ -8,6 +8,12 @@ export const LoginPage = () => {
             <Grow in={ true }>
                 <Box className='login-main-container'>
                     <Box className="login-container">
+                        <Box className="login-title-container">
+                            <Typography variant="h1" className="login-title">
+                                KURISU WEB
+                            </Typography>
+                            <Divider />
+                        </Box>
                         <Box className="info-container">
                             <Box className="data-text-container">
                                 <Typography
