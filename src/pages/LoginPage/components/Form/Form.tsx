@@ -12,10 +12,10 @@ export const Form = () => {
             password: '',
         },
         validationSchema: Yup.object().shape({
-            email: Yup.string().email('Correo electrónico no es válido').required(Messages.required),
-            password: Yup.string().required(Messages.required)
-                .min(8, "Contraseña debe tener mínimo 8 caracteres")
-                .max(20, "Contraseña debe tener máximo 20 caracteres"),
+            email: Yup.string().email(Messages.EmailInvalid).required(Messages.Required),
+            password: Yup.string().required(Messages.Required)
+                .min(8, Messages.PasswordMinLength)
+                .max(20, Messages.PasswordMaxLength),
         }),
         onSubmit: (values: LoginForm) => {
             // TODO: Implementar Login desde campos
