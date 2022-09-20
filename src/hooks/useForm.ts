@@ -11,9 +11,14 @@ export const useForm = <T>(initialState: T) => {
         }))
     }
 
+    const resetForm = () => {
+        seFormData({...initialState});
+    }
+
     return {
         ...formData,
         formData,
-        onChange
+        onChange,
+        resetForm
     }
 }
