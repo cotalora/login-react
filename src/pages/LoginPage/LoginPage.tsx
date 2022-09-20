@@ -55,11 +55,11 @@ export const LoginPage = () => {
                             >
                                 Ingresa tus credecciales para acceder a tu cuenta
                             </Typography>
-                            <form>
+                            <Box>
                                 <ButtonSocial />
                                 <Divider className='form-divider'>o</Divider>
                                 <Form />
-                            </form>
+                            </Box>
                         </Box>
                     </Box>
                 </Box>

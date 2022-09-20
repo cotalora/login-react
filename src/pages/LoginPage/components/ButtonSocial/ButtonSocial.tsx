@@ -19,6 +19,7 @@ export const ButtonSocial = () => {
             {
                 socials.map((social) =>
                     <Button
+                        key={social.text}
                         startIcon={
                             <img
                                 className='form-button-icon'

@@ -37,7 +37,7 @@ export const CarouselCards = () => {
             >
                 {
                     opinios.map((opinion) =>
-                        <Box className="info-item">
+                        <Box key={opinion.name} className="info-item">
                             <Typography
                                 paragraph={ true }
                                 className="info-item-text"
