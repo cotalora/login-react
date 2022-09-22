@@ -12,7 +12,7 @@ export const startGoogleLogin = () => async (dispatch: Dispatch) => {
 
     const result = await signInWithGoogle();
     if (!result.ok) return dispatch(logout(result));
-
+    
     dispatch(login(result));
 }
 

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { decryptToken } from '../../../utils/decryptToken';
 
 interface LoginState {
     status: string;
@@ -7,17 +8,20 @@ interface LoginState {
     displayName: string;
     photoURL: string;
     errorMessage: string;
+    accessToken: string;
 }
 
-const initialState: LoginState = localStorage.getItem('user') ?
-    JSON.parse(localStorage.getItem('user') || '') :
+const localState: any = localStorage.getItem('token') ? decryptToken(localStorage.getItem('token') || '') : '';
+
+const initialState: LoginState =
     {
-        status: 'not-authenticated',
-        uid: '',
-        email: '',
-        displayName: '',
-        photoURL: '',
+        status: localState ? 'authenticated' : 'not-authenticated',
+        uid: localState.user_id || '',
+        email: localState.email || '',
+        displayName: localState.name || '',
+        photoURL: localState.picture || '',
         errorMessage: '',
+        accessToken: localStorage.getItem('token') || ''
     };
 
 export const loginSlice = createSlice({
@@ -31,8 +35,9 @@ export const loginSlice = createSlice({
             state.displayName = payload.displayName;
             state.photoURL = payload.photoURL;
             state.errorMessage = payload.errorMessage;
+            state.accessToken = payload.accessToken;
 
-            localStorage.setItem('user', JSON.stringify(state));
+            localStorage.setItem('token', state.accessToken.toString());
         },
         logout: (state, { payload }) => {
             state.status = 'not-authenticated';
@@ -41,8 +46,9 @@ export const loginSlice = createSlice({
             state.displayName = '';
             state.photoURL = '';
             state.errorMessage = payload?.errorMessage || '';
+            state.accessToken = '';
 
-            localStorage.removeItem('user');
+            localStorage.removeItem('token');
         },
         checkingCredentials: (state) => {
             state.status = 'authenticating';
