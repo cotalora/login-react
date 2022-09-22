@@ -1,0 +1,13 @@
+.register-text {
+    font: normal normal 12px/20px NotoSans-Regular !important;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+
+    .register-anchor {
+        font: normal normal 12px/20px NotoSans-SemiBold !important;
+        color: #3C37FF;
+        text-decoration: none;
+        margin: 0px 0px 0px 5px;
+    }
+}

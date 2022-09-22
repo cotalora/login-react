@@ -4,14 +4,17 @@ import {
     Checkbox,
     FormControlLabel,
     InputLabel,
+    Link,
     TextField,
+    Typography,
 } from "@mui/material";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { Messages } from "../../../../enums/messages.enum";
+import './FormLogin.scss'
 
 export const FormLogin = () => {
-    
+
     const validationSchema = Yup.object().shape({
         email: Yup.string()
             .email(Messages.EmailInvalid)
@@ -21,7 +24,7 @@ export const FormLogin = () => {
             .min(8, Messages.PasswordMinLength)
             .max(20, Messages.PasswordMaxLength),
     })
-    
+
     return (
         <Formik
             initialValues={{
@@ -41,12 +44,12 @@ export const FormLogin = () => {
                         </InputLabel>
                         <TextField
                             id="email"
-                            error={ touched.email && errors.email ? true : false }
+                            error={touched.email && errors.email ? true : false}
                             variant="outlined"
                             type="email"
                             className="form-control-input"
-                            helperText={ touched.email && errors.email }
-                            { ...getFieldProps("email") }
+                            helperText={touched.email && errors.email}
+                            {...getFieldProps("email")}
                         />
                     </Box>
                     <Box className="form-control">
@@ -55,12 +58,12 @@ export const FormLogin = () => {
                         </InputLabel>
                         <TextField
                             id="password"
-                            error={ touched.password && errors.password ? true : false }
+                            error={touched.password && errors.password ? true : false}
                             variant="outlined"
                             type="password"
                             className="form-control-input"
-                            helperText={ touched.password && errors.password }
-                            { ...getFieldProps("password") }
+                            helperText={touched.password && errors.password}
+                            {...getFieldProps("password")}
                         />
                     </Box>
                     <Box className="form-control">
@@ -68,7 +71,7 @@ export const FormLogin = () => {
                             className="form-control-checkbox"
                             control={
                                 <Checkbox
-                                    disableRipple={ true }
+                                    disableRipple={true}
                                     className="checkbox"
                                     sx={{
                                         "&.Mui-checked": {
@@ -80,9 +83,14 @@ export const FormLogin = () => {
                             label="Recordar información"
                         />
                     </Box>
-                    <Button type="submit" className="button-principal button-mt-10">
+                    <Button type="submit" className="button-principal button-mbt-10">
                         Iniciar sesión
                     </Button>
+                    <Typography className="register-text" variant="body2">
+                        ¿Aún no tienes una cuenta?
+                        <Link className="register-anchor" href="#">Registrate</Link>
+                    </Typography>
+
                 </Form>
             )}
         </Formik>
