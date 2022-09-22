@@ -10,7 +10,7 @@ export const MainRoute = () => {
                 <Routes>
                     <Route path="other" element={<AnotherPage />} />
 
-                    <Route path="/" element={<Navigate to="/other" />} />
+                    <Route path="/*" element={<Navigate to="/other" />} />
                 </Routes>
             </div>
         </>

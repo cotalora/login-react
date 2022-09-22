@@ -8,12 +8,15 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from "../../../../store/slices/login";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { Messages } from "../../../../enums/messages.enum";
 import './FormLogin.scss'
 
 export const FormLogin = () => {
+    const dispatch = useDispatch(); 
 
     const validationSchema = Yup.object().shape({
         email: Yup.string()
@@ -32,8 +35,12 @@ export const FormLogin = () => {
                 password: "",
             }}
             validationSchema={validationSchema}
-            onSubmit={() => {
-                // TODO: Implementar Login desde campos
+            onSubmit={(event: any) => {
+                event = {
+                    ...event,
+                    isLogged: true,
+                }
+                dispatch(login(event));
             }}
         >
             {({ touched, errors, getFieldProps }) => (
@@ -90,7 +97,6 @@ export const FormLogin = () => {
                         ¿Aún no tienes una cuenta?
                         <Link className="register-anchor" href="#">Registrate</Link>
                     </Typography>
-
                 </Form>
             )}
         </Formik>
