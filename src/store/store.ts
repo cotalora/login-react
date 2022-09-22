@@ -6,3 +6,5 @@ export const store = configureStore({
         login: loginSlice.reducer,
     },
 })
+
+export type AppDispatch = typeof store.dispatch;

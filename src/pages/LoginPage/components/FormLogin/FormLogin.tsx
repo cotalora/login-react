@@ -8,14 +8,17 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
+import LoadingButton from '@mui/lab/LoadingButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from "../../../../store/slices/login";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { Messages } from "../../../../enums/messages.enum";
 import './FormLogin.scss'
+import { useMemo } from "react";
 
 export const FormLogin = () => {
+    const { status } = useSelector((state: any) => state.login);
     const dispatch = useDispatch(); 
 
     const validationSchema = Yup.object().shape({
@@ -26,7 +29,9 @@ export const FormLogin = () => {
             .required(Messages.Required)
             .min(8, Messages.PasswordMinLength)
             .max(20, Messages.PasswordMaxLength),
-    })
+    });
+
+    const isAuthenticating = useMemo(() => status === 'authenticating', [status]);
 
     return (
         <Formik
@@ -38,7 +43,11 @@ export const FormLogin = () => {
             onSubmit={(event: any) => {
                 event = {
                     ...event,
-                    isLogged: true,
+                    status: 'authenticated',
+                    uid: '123456789',
+                    displayName: 'John Doe',
+                    photoURL: 'asdasd',
+                    errorMessage: ''
                 }
                 dispatch(login(event));
             }}
@@ -90,9 +99,13 @@ export const FormLogin = () => {
                             label="Recordar información"
                         />
                     </Box>
-                    <Button type="submit" className="button-principal button-mbt-10">
+                    <LoadingButton 
+                        type="submit" 
+                        className="button-principal button-mbt-10"
+                        loading={isAuthenticating}
+                    >
                         Iniciar sesión
-                    </Button>
+                    </LoadingButton>
                     <Typography className="register-text" variant="body2">
                         ¿Aún no tienes una cuenta?
                         <Link className="register-anchor" href="#">Registrate</Link>

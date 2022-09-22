@@ -3,9 +3,9 @@ import { PublicRouteProps } from './interfaces/publicRoute';
 import { useSelector } from 'react-redux';
 
 export const PublicRoute = ({ children }: PublicRouteProps) => {
-    const { login } = useSelector( (state: any) => state.login );
+    const { login } = useSelector( (state: any) => state );
     
-    return (!login.isLogged)
+    return (login.status === 'not-authenticated' || login.status === 'authenticating')
         ? children
         : <Navigate to="/other" />
 }

@@ -137,3 +137,9 @@ body {
     font: normal normal 12px NotoSans-Medium !important;
     padding: 10px !important;
 }
+.button-principal.MuiLoadingButton-loading {
+    background: #3e37ff69 !important;
+    .MuiLoadingButton-loadingIndicator {
+        color: #3C37FF !important;
+    }
+}
