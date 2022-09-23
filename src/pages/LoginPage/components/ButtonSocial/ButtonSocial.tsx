@@ -1,7 +1,7 @@
 import { Box, Button } from '@mui/material'
 import { useAppDispatch } from '../../../../hooks/useAppDispatch'
 import { startGoogleLogin, startFacebookLogin } from '../../../../store/slices/login/thunks'
-import { Social } from '../../interfaces/social'
+import { Social } from '../../interfaces'
 import './ButtonSocial.scss'
 
 export const ButtonSocial = () => {

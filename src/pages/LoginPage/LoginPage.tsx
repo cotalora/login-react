@@ -3,6 +3,7 @@ import { ButtonSocial, CarouselCards, FormLogin } from "./components";
 import "./LoginPage.scss";
 
 export const LoginPage = () => {
+
     return (
         <>
             <Grow in={true}>

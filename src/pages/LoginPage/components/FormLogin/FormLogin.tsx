@@ -6,6 +6,7 @@ import {
     Link,
     TextField,
     Typography,
+    Alert,
 } from "@mui/material";
 import LoadingButton from '@mui/lab/LoadingButton';
 import { useSelector } from 'react-redux';
@@ -16,12 +17,15 @@ import './FormLogin.scss'
 import { useMemo } from "react";
 import { startLoginWithEmailPassword } from "../../../../store/slices/login/thunks";
 import { useAppDispatch } from "../../../../hooks/useAppDispatch";
-import { ILoginInWithAny } from "../../../../interfaces/login";
-import { IRootState } from "../../../../interfaces/rootState";
+import { ILoginInWithAny, IRootState } from "../../../../interfaces";
 
 export const FormLogin = () => {
-    const { status } = useSelector((state: IRootState) => state.login);
-    const dispatch = useAppDispatch(); 
+    const { status, errorMessage } = useSelector((state: IRootState) => state.login);
+
+    const dispatch = useAppDispatch();
+
+    const isAuthenticating = useMemo(() => status === 'authenticating', [status]);
+    
 
     const validationSchema = Yup.object().shape({
         email: Yup.string()
@@ -32,8 +36,6 @@ export const FormLogin = () => {
             .min(8, Messages.PasswordMinLength)
             .max(20, Messages.PasswordMaxLength),
     });
-
-    const isAuthenticating = useMemo(() => status === 'authenticating', [status]);
 
     return (
         <Formik
@@ -93,13 +95,17 @@ export const FormLogin = () => {
                             label="Recordar información"
                         />
                     </Box>
-                    <LoadingButton 
-                        type="submit" 
+                    <LoadingButton
+                        type="submit"
                         className="button-principal button-mbt-10"
                         loading={isAuthenticating}
                     >
                         Iniciar sesión
                     </LoadingButton>
+                    {
+                        errorMessage &&
+                        <Alert className="alert-error" variant="outlined" severity="error">{errorMessage}</Alert>
+                    }
                     <Typography className="register-text" variant="body2">
                         ¿Aún no tienes una cuenta?
                         <Link className="register-anchor" href="#">Registrate</Link>

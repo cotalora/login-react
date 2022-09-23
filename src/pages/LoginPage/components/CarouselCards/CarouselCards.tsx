@@ -1,6 +1,6 @@
 import { Avatar, Box, Typography } from '@mui/material'
 import Carousel from 'react-material-ui-carousel'
-import { Opinion } from '../../interfaces/opinion'
+import { Opinion } from '../../interfaces'
 import './CarouselCards.scss'
 
 const opinios: Opinion[] = [

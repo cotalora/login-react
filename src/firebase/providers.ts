@@ -1,5 +1,11 @@
-import { createUserWithEmailAndPassword, FacebookAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
-import { ILoginInWithEmailPassword } from "../interfaces/login";
+import { 
+    FacebookAuthProvider, 
+    GoogleAuthProvider, 
+    signInWithEmailAndPassword, 
+    signInWithPopup, 
+    updateProfile 
+} from "firebase/auth";
+import { ILoginInWithAny } from "../interfaces";
 import { FirebaseAuth } from "./config";
 
 const googleProvider = new GoogleAuthProvider();
@@ -9,7 +15,7 @@ export const signInWithGoogle = async () => {
     try {
         const result = await signInWithPopup(FirebaseAuth, googleProvider);
         const { displayName, email, photoURL, uid } = result.user;
-        
+
         return {
             ok: true,
             displayName,
@@ -18,7 +24,7 @@ export const signInWithGoogle = async () => {
             uid,
             accessToken: await result.user.getIdToken()
         }
-        
+
     } catch ({ code, message }: any) {
         const errorCode = code;
         const errorMessage = message;
@@ -55,14 +61,14 @@ export const signInWithFacebook = async () => {
     }
 }
 
-export const loginInWithEmailPassword = async ({ email, password }: ILoginInWithEmailPassword) => {
+export const loginInWithEmailPassword = async ({ email, password }: ILoginInWithAny) => {
     try {
         const result = await signInWithEmailAndPassword(FirebaseAuth, email, password);
         const { uid, photoURL, displayName } = result.user;
 
-        FirebaseAuth.currentUser && 
-            await updateProfile( FirebaseAuth.currentUser, { displayName });
-        
+        FirebaseAuth.currentUser &&
+            await updateProfile(FirebaseAuth.currentUser, { displayName });
+
         return {
             ok: true,
             displayName,
@@ -71,7 +77,7 @@ export const loginInWithEmailPassword = async ({ email, password }: ILoginInWith
             uid,
             accessToken: await result.user.getIdToken()
         }
-        
+
     } catch ({ code, message }: any) {
         const errorCode = code;
         const errorMessage = message;
@@ -84,6 +90,6 @@ export const loginInWithEmailPassword = async ({ email, password }: ILoginInWith
     }
 }
 
-export const logoutFirebase = async() => {
+export const logoutFirebase = async () => {
     return await FirebaseAuth.signOut();
 }
