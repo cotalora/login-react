@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ILoginState } from '../../../interfaces/login';
+import { ILoginState } from '../../../interfaces/rootState';
 import { decryptToken } from '../../../utils/decryptToken';
 import { ILocalState } from './interfaces/loginSlice';
 
