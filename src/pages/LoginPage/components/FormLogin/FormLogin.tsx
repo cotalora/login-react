@@ -1,6 +1,5 @@
 import {
     Box,
-    Button,
     Checkbox,
     FormControlLabel,
     InputLabel,
@@ -9,17 +8,20 @@ import {
     Typography,
 } from "@mui/material";
 import LoadingButton from '@mui/lab/LoadingButton';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from "../../../../store/slices/login";
+import { useSelector } from 'react-redux';
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import { Messages } from "../../../../enums/messages.enum";
 import './FormLogin.scss'
 import { useMemo } from "react";
+import { startLoginWithEmailPassword } from "../../../../store/slices/login/thunks";
+import { useAppDispatch } from "../../../../hooks/useAppDispatch";
+import { ILoginInWithAny } from "../../../../interfaces/login";
+import { IRootState } from "../../../../interfaces/rootState";
 
 export const FormLogin = () => {
-    const { status } = useSelector((state: any) => state.login);
-    const dispatch = useDispatch(); 
+    const { status } = useSelector((state: IRootState) => state.login);
+    const dispatch = useAppDispatch(); 
 
     const validationSchema = Yup.object().shape({
         email: Yup.string()
@@ -40,16 +42,8 @@ export const FormLogin = () => {
                 password: "",
             }}
             validationSchema={validationSchema}
-            onSubmit={(event: any) => {
-                event = {
-                    ...event,
-                    status: 'authenticated',
-                    uid: '123456789',
-                    displayName: 'John Doe',
-                    photoURL: 'asdasd',
-                    errorMessage: ''
-                }
-                dispatch(login(event));
+            onSubmit={({ email, password }: ILoginInWithAny) => {
+                dispatch(startLoginWithEmailPassword({ email, password }));
             }}
         >
             {({ touched, errors, getFieldProps }) => (

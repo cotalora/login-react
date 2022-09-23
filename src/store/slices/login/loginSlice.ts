@@ -1,21 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { ILoginState } from '../../../interfaces/login';
 import { decryptToken } from '../../../utils/decryptToken';
+import { ILocalState } from './interfaces/loginSlice';
 
-interface LoginState {
-    status: string;
-    uid: string;
-    email: string;
-    displayName: string;
-    photoURL: string;
-    errorMessage: string;
-    accessToken: string;
-}
+const localState: ILocalState = localStorage.getItem('token') ? 
+    decryptToken(localStorage.getItem('token') || '') : {
+        user_id: '',
+        email: '',
+        name: '',
+        picture: ''
+    };
 
-const localState: any = localStorage.getItem('token') ? decryptToken(localStorage.getItem('token') || '') : '';
-
-const initialState: LoginState =
+const initialState: ILoginState =
     {
-        status: localState ? 'authenticated' : 'not-authenticated',
+        status: localState.user_id ? 'authenticated' : 'not-authenticated',
         uid: localState.user_id || '',
         email: localState.email || '',
         displayName: localState.name || '',

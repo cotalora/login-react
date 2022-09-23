@@ -1,7 +1,8 @@
 
 import { Dispatch } from "@reduxjs/toolkit";
-import { signInWithFacebook, signInWithGoogle } from "../../../firebase/providers";
+import { loginInWithEmailPassword, logoutFirebase, signInWithFacebook, signInWithGoogle } from "../../../firebase/providers";
 import { checkingCredentials, login, logout } from "./loginSlice"
+import { ILoginInWithAny } from '../../../interfaces/login';
 
 export const checkingAuthentication = () => async (dispatch: Dispatch) => {
     dispatch(checkingCredentials());
@@ -23,4 +24,19 @@ export const startFacebookLogin = () => async (dispatch: Dispatch) => {
     if (!result.ok) return dispatch(logout(result));
 
     dispatch(login(result));
+}
+
+export const startLoginWithEmailPassword = ({ email, password }: ILoginInWithAny) => async (dispatch: Dispatch) => {
+    dispatch(checkingCredentials());
+
+    const result = await loginInWithEmailPassword({ email, password });
+
+    if (!result.ok) return dispatch(logout(result));
+    dispatch(login(result));
+}
+
+export const startLogout = () => async (dispatch: Dispatch) => {
+    const result = await logoutFirebase();
+
+    dispatch(logout(result));
 }

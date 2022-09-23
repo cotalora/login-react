@@ -1,11 +1,11 @@
 import { Button } from "@mui/material"
-import { useDispatch } from 'react-redux';
-import { logout } from "../../store/slices/login";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { startLogout } from "../../store/slices/login/thunks";
 
 export const AnotherPage = () => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch(); 
     
     return (
-        <Button onClick={() => dispatch(logout())}>Cerrar sesión</Button>
+        <Button onClick={() => dispatch(startLogout())}>Cerrar sesión</Button>
     )
 }

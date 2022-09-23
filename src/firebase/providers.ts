@@ -1,4 +1,5 @@
-import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, FacebookAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
+import { ILoginInWithEmailPassword } from "../interfaces/login";
 import { FirebaseAuth } from "./config";
 
 const googleProvider = new GoogleAuthProvider();
@@ -18,9 +19,9 @@ export const signInWithGoogle = async () => {
             accessToken: await result.user.getIdToken()
         }
         
-    } catch (error: any) {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+    } catch ({ code, message }: any) {
+        const errorCode = code;
+        const errorMessage = message;
 
         return {
             ok: false,
@@ -42,9 +43,9 @@ export const signInWithFacebook = async () => {
             photoURL,
             uid
         }
-    } catch (error: any) {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+    } catch ({ code, message }: any) {
+        const errorCode = code;
+        const errorMessage = message;
 
         return {
             ok: false,
@@ -52,4 +53,37 @@ export const signInWithFacebook = async () => {
             errorMessage
         }
     }
+}
+
+export const loginInWithEmailPassword = async ({ email, password }: ILoginInWithEmailPassword) => {
+    try {
+        const result = await signInWithEmailAndPassword(FirebaseAuth, email, password);
+        const { uid, photoURL, displayName } = result.user;
+
+        FirebaseAuth.currentUser && 
+            await updateProfile( FirebaseAuth.currentUser, { displayName });
+        
+        return {
+            ok: true,
+            displayName,
+            email,
+            photoURL,
+            uid,
+            accessToken: await result.user.getIdToken()
+        }
+        
+    } catch ({ code, message }: any) {
+        const errorCode = code;
+        const errorMessage = message;
+
+        return {
+            ok: false,
+            errorCode,
+            errorMessage
+        }
+    }
+}
+
+export const logoutFirebase = async() => {
+    return await FirebaseAuth.signOut();
 }
