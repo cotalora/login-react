@@ -25,7 +25,6 @@ export const FormLogin = () => {
     const dispatch = useAppDispatch();
 
     const isAuthenticating = useMemo(() => status === 'authenticating', [status]);
-    
 
     const validationSchema = Yup.object().shape({
         email: Yup.string()
@@ -49,7 +48,7 @@ export const FormLogin = () => {
             }}
         >
             {({ touched, errors, getFieldProps }) => (
-                <Form>
+                <Form aria-label="submit-form">
                     <Box className="form-control">
                         <InputLabel htmlFor="email" className="form-control-label">
                             Correo electrónico
@@ -61,6 +60,9 @@ export const FormLogin = () => {
                             type="email"
                             className="form-control-input"
                             helperText={touched.email && errors.email}
+                            inputProps={{
+                                'data-testid': 'password'
+                            }}
                             {...getFieldProps("email")}
                         />
                     </Box>

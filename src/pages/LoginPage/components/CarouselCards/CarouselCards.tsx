@@ -7,11 +7,11 @@ const opinios: Opinion[] = [
     {
         opinion: '¡Simplemente increible! Estoy realmete sarisfecho con mi proyecto y mi negocio. Esto es absolutamente fantastico',
         image: 'src/assets/img/1.jpg',
-        name: 'Timson K.',
-        job: 'Developer Freelanzer',
+        name: 'Timson Q.',
+        job: 'Developer Freelanzer Jr',
     },
     {
-        opinion: '¡Simplemente increible! Estoy realmete sarisfecho con mi proyecto y mi negocio. Esto es absolutamente fantastico',
+        opinion: '¡Simplemente es increible! Estoy realmete sarisfecho con mi proyecto y mi negocio. Esto es absolutamente fantastico',
         image: 'src/assets/img/2.jpg',
         name: 'Timson K.',
         job: 'Developer Freelanzer',
@@ -37,7 +37,7 @@ export const CarouselCards = () => {
             >
                 {
                     opinios.map((opinion) =>
-                        <Box key={opinion.name} className="info-item">
+                        <Box key={opinion.name} className="info-item" aria-label='opinion-container'>
                             <Typography
                                 paragraph={ true }
                                 className="info-item-text"
