@@ -1,0 +1,36 @@
+.buttons-page-container {
+    position: fixed;
+    bottom: 2%;
+    left: calc(50% - 20px);
+    display: flex;
+    gap: 20px;
+    opacity: 0.5;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    .button {
+        height: 40px;
+        width: 40px;
+        padding: 0px;
+        background-color: #FFFFFF;
+
+        &.Mui-disabled {
+            opacity: 0.5 !important;
+            background-color: #FFFFFF;
+        }
+
+        .button-icon {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .button-left {
+        transform: rotate(-90deg);
+    }
+    .button-rigth {
+        transform: rotate(90deg);
+    }
+}

@@ -1,0 +1,23 @@
+.card-pokemon {
+    max-width: 345px;
+    border-radius: 20px !important;
+
+    .card-pokemon-media {
+        height: 230px;
+    }
+
+    .card-pokemon-content {
+        background: #3C37FF;
+        color: #FFFFFF;
+        h5 {
+            text-transform: capitalize;
+            font: normal normal 18px/20px NotoSans-Medium !important;
+            margin: 0px 0px 10px 0px;
+        }
+
+        p {
+            color: #FFFFFF;
+            font: normal normal 12px/16px NotoSans-Thin !important;
+        }
+    }
+}

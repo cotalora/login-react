@@ -1,6 +1,6 @@
 export interface Social {
     image: string,
     text: string,
-    action: any,
+    action: () => void,
     ariaLabel: string
 }

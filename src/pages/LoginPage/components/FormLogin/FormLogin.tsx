@@ -12,7 +12,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import { useSelector } from 'react-redux';
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import { Messages } from "../../../../enums/messages.enum";
+import { Messages } from "../../../../enums";
 import './FormLogin.scss'
 import { useMemo } from "react";
 import { startLoginWithEmailPassword } from "../../../../store/slices/login/thunks";

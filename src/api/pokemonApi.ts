@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { IPokemon } from '../interfaces/rootState';
 
 const pokemonApi = axios.create({
     baseURL:import.meta.env.VITE_BASE_URL
@@ -6,7 +7,7 @@ const pokemonApi = axios.create({
 
 export const getPokemonsByPage = async (page: number) => {
     const { data } = await pokemonApi.get(`/pokemon?limit=50&offset=${page * 50}`);
-    const pokemons = data.results.map(async (pokemon: any) => {
+    const pokemons = data.results.map(async (pokemon: IPokemon) => {
         const { data } = await pokemonApi.get(`/pokemon/${pokemon.name}`);
         
         return {name: data.name, url: data.sprites.front_default};

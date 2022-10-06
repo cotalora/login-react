@@ -1,16 +1,13 @@
-.card-container {
-    display: grid;
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    grid-template-columns: repeat(
-        auto-fill,
-        minmax(200px, 1fr)
-    );
-
-    gap: 20px
-}
-
-.buttons-page-container {
-    position: fixed;
-    bottom: 2%;
-    left: 50%;
+    img {
+        width: 300px;
+    }
+    hr {
+        margin: 20px 0px;
+        width: 100%;
+    }
 }
