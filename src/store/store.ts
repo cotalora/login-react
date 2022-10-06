@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { loginSlice } from './slices/login';
+import { loginSlice, pokemonSlice, loadingSpinnerSlice } from './slices';
 
 export const store = configureStore({
     reducer: {
+        loadingSpinner: loadingSpinnerSlice.reducer,
         login: loginSlice.reducer,
+        pokemon: pokemonSlice.reducer,
     },
 })
 

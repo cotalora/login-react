@@ -1,21 +1,35 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Grow } from "@mui/material";
-import { AnotherPage } from '../../pages/AnotherPage/AnotherPage'
+import { Box, CircularProgress, Fade, Grow } from "@mui/material";
+import { DrawerLayout } from '../../layouts/Drawer';
+import { ChatPage, HomePage, PokemonPage } from '../../pages';
+import { IRootState } from '../../interfaces';
+import { useSelector } from 'react-redux';
 
 export const MainRoute = () => {
+
+    const { isLoading } = useSelector((state: IRootState) => state.loadingSpinner);
+
     return (
         <>
             <Grow in={true}>
                 <div>
-                    <div>NAVBAR</div>
+                    {
+                        isLoading &&
+                        <Fade in={true}>
+                            <Box className='main-spinner'><CircularProgress /></Box>
+                        </Fade>
+                    }
+                    <DrawerLayout>
+                        <div className="container" aria-label='main-routes-container'>
+                            <Routes>
+                                <Route path="/" element={<HomePage />} />
+                                <Route path="chat" element={<ChatPage />} />
+                                <Route path="pokemon" element={<PokemonPage />} />
 
-                    <div className="container">
-                        <Routes>
-                            <Route path="other" element={<AnotherPage />} />
-
-                            <Route path="/*" element={<Navigate to="/other" />} />
-                        </Routes>
-                    </div>
+                                <Route path="/*" element={<Navigate to="/" />} />
+                            </Routes>
+                        </div>
+                    </DrawerLayout>
                 </div>
             </Grow>
         </>

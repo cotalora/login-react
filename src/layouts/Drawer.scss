@@ -1,0 +1,47 @@
+.topbar {
+    background: #3C37FF !important;
+}
+
+.title-avatar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.count-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+    .avatar-img {
+        max-width: 35px;
+        max-height: 35px;
+    }
+}
+
+.anchor-link {
+    text-decoration: none !important;
+
+    .item-list {
+        padding: 0 !important;
+        display: block !important;
+        color: #3C37FF !important;
+
+        .item-list-button {
+            min-height: 48px !important;
+
+            .item-list-icon {
+                min-width: 0 !important;
+                justify-content: center !important;
+            }
+        }
+    }
+
+    &.active {
+        .item-list {
+            color: #ffffff !important;
+            background: #3C37FF;
+        }
+    }
+}

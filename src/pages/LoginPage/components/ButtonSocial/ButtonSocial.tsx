@@ -11,12 +11,14 @@ export const ButtonSocial = () => {
         {
             image: 'src/assets/img/google-icon.svg',
             text: 'Inicia sesión con Google',
-            action: () => dispatch(startGoogleLogin())
+            action: () => dispatch(startGoogleLogin()),
+            ariaLabel: 'google-button'
         },
         {
             image: 'src/assets/img/facebook-icon.svg',
             text: 'Inicia sesión con Facebook',
-            action: () => dispatch(startFacebookLogin())
+            action: () => dispatch(startFacebookLogin()),
+            ariaLabel: 'facebook-button'
         }
     ]
 
@@ -33,6 +35,7 @@ export const ButtonSocial = () => {
                             />
                         }
                         className="form-button-social"
+                        aria-label={social.ariaLabel}
                         onClick={social.action}
                     >
                         { social.text }

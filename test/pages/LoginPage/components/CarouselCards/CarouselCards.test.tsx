@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { CarouselCards } from '../../../../../src/pages/LoginPage/components/CarouselCards/CarouselCards';
 import { Opinion } from '../../../../../src/pages/LoginPage/interfaces';

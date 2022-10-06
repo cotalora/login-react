@@ -11,16 +11,15 @@ const localState: ILocalState = localStorage.getItem('token') ?
         picture: ''
     };
 
-const initialState: ILoginState =
-    {
-        status: localState.user_id ? 'authenticated' : 'not-authenticated',
-        uid: localState.user_id || '',
-        email: localState.email || '',
-        displayName: localState.name || '',
-        photoURL: localState.picture || '',
-        errorMessage: '',
-        accessToken: localStorage.getItem('token') || ''
-    };
+const initialState: ILoginState = {
+    status: localState.user_id ? 'authenticated' : 'not-authenticated',
+    uid: localState.user_id || '',
+    email: localState.email || '',
+    displayName: localState.name || '',
+    photoURL: localState.picture || '',
+    errorMessage: '',
+    accessToken: localStorage.getItem('token') || ''
+};
 
 export const loginSlice = createSlice({
     name: 'login',

@@ -1,10 +1,11 @@
+import React from 'react';
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { ILoginInWithAny } from "../../../../../src/interfaces";
 import { FormLogin } from '../../../../../src/pages/LoginPage/components/FormLogin/FormLogin';
 import { configureStore } from '@reduxjs/toolkit';
 import { loginSlice } from '../../../../../src/store/slices/login/loginSlice';
 import { notAuthenticatedState } from "../../../../feaxture/loginFeaxture";
-import { Provider, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import { MemoryRouter } from "react-router-dom";
 import { act } from "react-dom/test-utils";
 
@@ -53,6 +54,8 @@ describe(`Pruebas unitarias a componente FormLogin`, () => {
                 password: userCredentials.password
             })
         )
+
+        expect(store.getState().login).toEqual(notAuthenticatedState);
     });
 
     test(`Se debe presentar el texto Campo requerido cuando se haga submit y cuando no hay 

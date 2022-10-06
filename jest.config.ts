@@ -8,4 +8,6 @@ export default {
         '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
     },
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+    collectCoverage: true,
+    coverageReporters: ["json", "html"]
 }
