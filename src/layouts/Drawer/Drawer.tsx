@@ -117,7 +117,7 @@ const drawerItems = [
         name: 'Rick RTK List',
         icon: {
             target: '#item-rickrtk',
-            src: '../../src/assets/icons/bug-icon.json',
+            src: '../../src/assets/icons/pizza-icon.json',
             colors: {
                 primary: '#3C37FF',
                 secondary: '#3C37FF'

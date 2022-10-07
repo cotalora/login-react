@@ -1,9 +1,10 @@
 import { useGetCharacterByIdQuery, useGetCharactersQuery } from "../../store/api/rickAndMortyApi/rickAndMortyApi";
 import { useState, useEffect } from 'react';
-import { Box } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import './RickRTKPage.scss';
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { setLoading, unsetLoading } from "../../store/slices";
+import { AnimatedIcon } from "../../components";
 
 export const RickRTKPage = () => {
 
@@ -33,30 +34,44 @@ export const RickRTKPage = () => {
 
     return (
         <>
-        <Box className="general-container">
-            <Box className="specific-character-container">
-                <Box className="img-container">
-                    <img src={character?.image} alt={character?.name} />
-                    <Box className="button-container">
-                        <button onClick={prevCharacter}>Previous</button>
-                        <button onClick={nextCharacter}>Next</button>
+            <Box className="general-container">
+                <Box className="specific-character-container">
+                    <Box className="img-container">
+                        <img src={character?.image} alt={character?.name} />
+                        <Box className="button-container">
+                            <IconButton id="left-button" className="left-button" onClick={prevCharacter}>
+                                <AnimatedIcon
+                                    target='#left-button'
+                                    trigger='hover'
+                                    src='../../src/assets/icons/arrow-icon.json'
+                                    colors={{ primary: '#3C37FF', secondary: '#3C37FF' }}
+                                />
+                            </IconButton>
+                            <IconButton id="right-button" className="right-button" onClick={nextCharacter}>
+                                <AnimatedIcon
+                                    target='#right-button'
+                                    trigger='hover'
+                                    src='../../src/assets/icons/arrow-icon.json'
+                                    colors={{ primary: '#3C37FF', secondary: '#3C37FF' }}
+                                />
+                            </IconButton>
+                        </Box>
+                    </Box>
+                    <Box className="button-title-container">
+                        <span>{character?.name}</span>
+                        <p>{character?.name} Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio itaque, perspiciatis nihil deleniti vel repudiandae minima velit necessitatibus eum! Incidunt unde possimus in totam! Dolorem eligendi minima hic sed voluptate!</p>
                     </Box>
                 </Box>
-                <Box className="button-title-container">
-                    <span>{character?.name}</span>
-                    <p>{character?.name} Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio itaque, perspiciatis nihil deleniti vel repudiandae minima velit necessitatibus eum! Incidunt unde possimus in totam! Dolorem eligendi minima hic sed voluptate!</p>
+                <Box className="character-list-container">
+                    {
+                        characters?.results.map(({ id, image, name }) => (
+                            <Box className="character-box" key={id}>
+                                <img src={image} alt={name} />
+                            </Box>
+                        ))
+                    }
                 </Box>
             </Box>
-            <Box className="character-list-container">
-                {
-                    characters?.results.map(({id, image, name}) => (
-                        <Box className="character-box" key={id}>
-                            <img src={image} alt={name} />
-                        </Box>
-                    ))
-                }
-            </Box>
-        </Box>
         </>
     )
 }
