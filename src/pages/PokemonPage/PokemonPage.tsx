@@ -33,3 +33,5 @@ export const PokemonPage = () => {
         </>
     )
 }
+
+export default PokemonPage;

@@ -1,0 +1,43 @@
+.mainCardsContainer {
+    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+
+    .mainCard {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #2520e37d;
+        border-radius: 20px;
+        background: #FFFFFF;
+        box-shadow: 0px 10px 15px -4px rgb(0 0 0 / 10%);
+        padding: 20px;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        
+        &:hover {
+            box-shadow: 0px 10px 15px -4px rgb(0 0 0 / 20%);
+            background: #2620e30c;
+        }
+        .buttonCard {
+            height: 100px;
+            width: 100px;
+            align-self: center;
+        }
+        .titleCard {
+            font: normal normal 18px NotoSans-bold !important;
+            color: #2520E3;
+            margin: 0px 0px 10px 0px;
+        }
+        .descriptionCard {
+            font: normal normal 16px/18px NotoSans-Light !important;
+            color: #2520E3;
+            text-align: justify;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .mainCardsContainer {
+        grid-template-columns: 1fr;
+    }
+}

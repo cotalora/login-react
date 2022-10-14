@@ -9,6 +9,7 @@ body {
     .Mui-focused {
         & .MuiOutlinedInput-notchedOutline {
             border: 1px solid #3C37FF !important;
+
             &:hover {
                 border-color: 'yellow';
             }
@@ -21,6 +22,21 @@ body {
 
 * {
     box-sizing: border-box;
+    scrollbar-width: auto;
+    scrollbar-color: #cfcfcf #ffffff;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff49;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #cfcfcf;
 }
 
 @font-face {
@@ -115,6 +131,7 @@ body {
                 color: #000000;
             }
         }
+
         p.MuiFormHelperText-root.Mui-error {
             font: normal normal 10px NotoSans-Medium;
         }
@@ -149,8 +166,10 @@ body {
     font: normal normal 12px NotoSans-Medium !important;
     padding: 10px !important;
 }
+
 .button-principal.MuiLoadingButton-loading {
     background: #3e37ff69 !important;
+
     .MuiLoadingButton-loadingIndicator {
         color: #3C37FF !important;
     }

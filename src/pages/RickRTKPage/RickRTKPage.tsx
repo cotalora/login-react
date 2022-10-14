@@ -11,8 +11,8 @@ export const RickRTKPage = () => {
     const dispatch = useAppDispatch();
     const [characterId, setCharacterId] = useState(1);
 
-    const { data: characters, isLoading: isLoadingCharacters } = useGetCharactersQuery();
-    const { data: character, isLoading: isLoadingCharacter } = useGetCharacterByIdQuery(characterId);
+    const { data: characters, isFetching: isLoadingCharacters } = useGetCharactersQuery();
+    const { data: character, isFetching: isLoadingCharacter } = useGetCharacterByIdQuery(characterId);
 
     const prevCharacter = () => {
         if (characterId === 1) return;
@@ -75,3 +75,5 @@ export const RickRTKPage = () => {
         </>
     )
 }
+
+export default RickRTKPage;

@@ -8,5 +8,5 @@ export const PublicRoute = ({ children }: PublicRouteProps) => {
     
     return (status === 'not-authenticated' || status === 'authenticating')
         ? children
-        : <Navigate to="/other" />
+        : <Navigate to="/" />
 }

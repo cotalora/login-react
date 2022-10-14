@@ -11,7 +11,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import './Drawer.scss'
 import { AnimatedIcon } from '../../components';
-import { NavBar } from './components/NavBar/NavBar';
+import { NavBar } from '../NavBar/NavBar';
 import { DrawerWidth } from '../../enums';
 
 const openedMixin = (theme: Theme): CSSObject => ({

@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Grow } from "@mui/material";
-import { DrawerLayout } from '../../layouts/Drawer/Drawer';
 import { IRootState } from '../../interfaces';
 import { useSelector } from 'react-redux';
 import { LoadingSpinner } from '../../components';
 import { routes } from './data/index';
-import './MainRoute.scss'
+import './MainRoute.scss';
+import { RootPage } from '../../pages/RootPage/RootPage';
+import { Fade, Skeleton, Box } from '@mui/material';
 
 export const MainRoute = () => {
 
@@ -14,23 +14,23 @@ export const MainRoute = () => {
 
     return (
         <>
-            <Grow className='grow-animation' in={true}>
+            <Fade className='grow-animation' in={true}>
                 <div>
                     <LoadingSpinner isLoading={isLoading} />
-                    <DrawerLayout>
-                        <div className="container" aria-label='main-routes-container'>
+                    <RootPage>
+                        <Suspense fallback={<LoadingSpinner isLoading={true} />}>
                             <Routes>
                                 {
                                     routes.map(({ path, element }) => (
-                                        <Route key={path} path={path} element={React.createElement(element)}/>
+                                        <Route key={path} path={path} element={React.createElement(element)} />
                                     ))
                                 }
                                 <Route path="/*" element={<Navigate to="/" />} />
                             </Routes>
-                        </div>
-                    </DrawerLayout>
+                        </Suspense>
+                    </RootPage>
                 </div>
-            </Grow>
+            </Fade>
         </>
     )
 }

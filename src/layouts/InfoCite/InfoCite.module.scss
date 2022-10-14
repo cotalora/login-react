@@ -1,0 +1,151 @@
+.semiBody {
+    padding: 3vh 6vw;
+    background: #2520E3;
+    position: relative;
+
+    .buttonClose {
+        position: absolute;
+        background: #FFFFFF;
+        border-radius: 100%;
+        top: 20px;
+        right: 6vw;
+        padding: 0px;
+        transition: background-color 200ms;
+        z-index: 1;
+
+        &:hover {
+            background: #FFFFFF;
+            box-shadow: 0px 0px 10px 5px rgba(255, 255, 255, 0.3) !important;
+        }
+    }
+
+    .textContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+
+        .mainText {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            p {
+                font: normal normal 35px NotoSans-Thin;
+                color: #FFFFFF;
+            }
+
+            img {
+                height: 45px;
+                width: 45px;
+            }
+        }
+
+        .subText {
+            p {
+                font: normal normal 35px NotoSans-Regular;
+                color: #FFFFFF;
+
+                b {
+                    font: normal normal 35px NotoSans-Bold;
+                }
+            }
+        }
+
+        .socialMedia {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            p {
+                font: normal normal 12px NotoSans-Light;
+                color: #FFFFFF;
+            }
+
+            .socialButtonContainer {
+                .socialButton {
+                    padding: 0;
+                    width: 100%;
+                    min-width: auto;
+                    border-radius: 100%;
+
+                    .socialAvatar {
+                        background: #FFFFFF;
+                        border: none;
+                        transition: background-color 400ms;
+
+                        &:hover {
+                            background: #ffffffcc !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .imgPeople {
+            width: 300px;
+            position: absolute;
+            bottom: -3vh;
+            right: 50px;
+        }
+    }
+}
+
+@media (max-width: 1080px) {
+    .imgPeople {
+        display: none;
+    }
+}
+
+@media (max-width: 580px) {
+    .textContainer {
+
+        .mainText {
+
+            p {
+                font: normal normal 25px NotoSans-Thin !important;
+                color: #FFFFFF;
+            }
+
+            img {
+                height: 30px !important;
+                width: 30px !important;
+            }
+        }
+
+        .subText {
+
+            p {
+                font: normal normal 20px NotoSans-Regular !important;
+                color: #FFFFFF;
+
+                b {
+                    font: normal normal 20px NotoSans-Bold !important;
+                }
+            }
+        }
+
+        .socialMedia {
+            .socialButtonContainer {
+                .socialButton {
+                    .socialAvatar {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 430px) {
+    .textContainer {
+
+        .mainText {
+
+            img {
+                display: none;
+            }
+        }
+    }
+}

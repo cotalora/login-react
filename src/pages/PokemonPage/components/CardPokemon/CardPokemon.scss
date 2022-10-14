@@ -1,6 +1,8 @@
 .card-pokemon {
     max-width: 345px;
     border-radius: 20px !important;
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.1) !important;
+    border: 1px solid #3C37FF;
 
     .card-pokemon-media {
         height: 230px;
