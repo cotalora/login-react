@@ -16,6 +16,7 @@ export const HomePage = () => {
                         path != '/' &&
                             <Link 
                                 id={`button-main-${path}`} 
+                                key={path}
                                 className={styles.mainCard}
                                 to={path}
                             >

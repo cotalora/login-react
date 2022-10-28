@@ -7,7 +7,7 @@ export const LoadingSpinner = ({ isLoading }: LoadingSpinnerProps) => {
         {
             isLoading && 
             <Fade in={true}>
-                <Box className='main-spinner'><CircularProgress /></Box>
+                <Box className='main-spinner'><CircularProgress aria-label='spinnerLoading' /></Box>
             </Fade>
         }
         </>

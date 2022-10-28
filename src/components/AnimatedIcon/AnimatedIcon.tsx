@@ -4,6 +4,22 @@ import { AnimatedIconProps } from './interfaces/AnimatedIcon';
 
 defineLordIconElement(lottie.loadAnimation);
 
+declare global {
+    namespace JSX {
+        interface IntrinsicElements {
+            'lord-icon': LordIconProps
+        }
+    }
+}
+
+interface LordIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+    class?: string,
+    target?: string,
+    trigger?: string,
+    src?: string,
+    colors?: string,
+}
+
 export const AnimatedIcon = ({ target, trigger, src, colors, className }: AnimatedIconProps) => {
     return (
         <>
