@@ -4,6 +4,7 @@ import { HomePage } from '../../../pages';
 const LazyChat = lazy(() => import('../../../pages/ChatPage/ChatPage'));
 const LazyPokemon = lazy(() => import('../../../pages/PokemonPage/PokemonPage'));
 const LazyRick = lazy(() => import('../../../pages/RickRTKPage/RickRTKPage'));
+const LazyMaps = lazy(() => import('../../../pages/MapsPage/MapsPage'));
 
 export const routes = [
     {
@@ -29,5 +30,11 @@ export const routes = [
         icon: '../../../src/assets/icons/rick-color-icon.json',
         name: 'Rick and Morty RTK Qurery',
         element: LazyRick
+    },
+    {
+        path: 'maps',
+        icon: '../../../src/assets/icons/maps-icon.json',
+        name: 'Maps App',
+        element: LazyMaps
     },
 ]
